@@ -29,7 +29,9 @@ public class ArmMoveByParameters extends Command {
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		if((Robot.armsSubsystem.getPotentAngel() <= RobotMap.MIN_ANGLE) || (Robot.armsSubsystem.getPotentAngel() >= RobotMap.MAX_ANGLE) || (Robot.armsSubsystem.getMaxSwitchState()) || (Robot.armsSubsystem.getMinSwitchState()))
+		if(((Robot.armsSubsystem.getPotentAngle() <= RobotMap.MIN_ANGLE) || (Robot.armsSubsystem.getMinSwitchState())) && (Robot.armsSubsystem.getArmTalonSpeed()<0))
+			return true;
+		else if(((Robot.armsSubsystem.getPotentAngle() >= RobotMap.MAX_ANGLE) || (Robot.armsSubsystem.getMaxSwitchState())) && (Robot.armsSubsystem.getArmTalonSpeed()>0))
 			return true;
 		return false;
 	}

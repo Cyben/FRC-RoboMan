@@ -36,9 +36,12 @@ public class ArmsSubsystem extends Subsystem{
 	public void MoveArms(double speed){
 		armTalon.set(speed);
 	}
-	
+	//get motor speed
+	public double getArmTalonSpeed(){
+		return armTalon.get();
+	}
 	//return ptentiometer angel
-	public double getPotentAngel(){
+	public double getPotentAngle(){
 		return armPotent.get() * 72;
 	}
 	//retern MicroSwitchs state
