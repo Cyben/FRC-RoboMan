@@ -2,7 +2,10 @@ package org.usfirst.frc.team4320.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
+import org.usfirst.frc.team4320.robot.commands.ArmsMoveMax;
+import org.usfirst.frc.team4320.robot.commands.ArmsMoveMin;
 import org.usfirst.frc.team4320.robot.commands.ExampleCommand;
 
 /**
@@ -17,6 +20,11 @@ public class OI {
 	public OI(){
 		
 		xboxController = new XboxController(RobotMap.XBOX_CONTROLLER);
+		JoystickButton armUp = new JoystickButton(xboxController,4); //Y Button
+		JoystickButton armDown = new JoystickButton(xboxController,1); //A Button
+		
+		armUp.whenPressed(new ArmsMoveMax());
+		armDown.whenPressed(new ArmsMoveMin());
 	}
 	
 	public XboxController getController(){
